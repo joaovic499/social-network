@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   post '/logins', to: 'login#register'
 
+  resources :logins, only: [:new, :create]
+
 end

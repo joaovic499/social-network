@@ -1,24 +1,23 @@
-<h1>Tela de Cadastro</h1>
+<h1>Cadastro de Usuário</h1>
 
-<form action="/logins" accept-charset="UTF-8" method="post">
-    <input type="hidden" name="authenticity_token" value="...">
-    
+<%= form_with url: "/logins", form: @login do |form| %>
     <div>
-        <label for="nome_user">Nome: </label><br>
-        <input type="text" name="user[name]" id="nome_user">
-    </div> <br>
+        <%= form.label :email %><br>
+        <%= form.email_field :email %>
+    </div>
 
     <div>
-        <label for="email_user">email: </label><br>
-        <input type="text" name="user[email]" id="email_user">
-    </div> <br>
-    
+        <%= form.label :password %><br>
+        <%= form.password_field :password %>
+    </div>
+
     <div>
-        <label for="password_user">Password: </label><br>
-        <input type="password" name="user[password]" id="password_user">
-    </div> <br>
-    
-    <div> 
-        <input type="submit" name="commit" value="Create Register" data-disable-with="Create Register">
-    </div> <br>
-</form>
+        <%= form.label :name %><br>
+        <%= form.text_field :name%>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+
+<% end %>

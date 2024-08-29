@@ -1,8 +1,13 @@
 class LoginController < ApplicationController
+
   protect_from_forgery with: :null_session
 
   def home
     redirect_to @home
+  end
+
+  def new
+    @login = Login.new
   end
 
   def register
@@ -11,12 +16,11 @@ class LoginController < ApplicationController
     if @login.save
       render :home
     else 
-      render :home, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
-end
+  end
 
   private def login_params
-
-    params.require(:user).permit(:email, :name, :password)
+    params.require(:form).permit(:email, :name, :password)
   end
 end
