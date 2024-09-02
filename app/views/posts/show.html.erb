@@ -1,0 +1,17 @@
+<h1> <%= @register.title %> </h1>
+
+<p><%= @register.body%></p>
+
+<ul>
+    <li><%= link_to "Edit", edit_posts_path(@register)%></li>
+    <li><%= link_to "Destroy", article_path(@register), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+        } %> </li>
+</ul>
+
+<h2>Title</h2>
+<%= render @register.title%>
+
+<h2>Add a comment:</h2>
+<%= render "posts/form", user: @register %>
